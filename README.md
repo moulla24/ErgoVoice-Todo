@@ -1,22 +1,32 @@
+# ErgoVoice-Todo
 
-# ErgoVoice-Todo Interface Design
-
-Application de gestion de tâches avec contrôle vocal en français. L'interface originale est disponible sur [Figma](https://www.figma.com/design/0ofG9caDkDmIQrZVzO7oG2/ErgoVoice-Todo-Interface-Design).
+Application moderne de gestion de tâches avec contrôle vocal en français. Interface élégante et intuitive pour organiser vos tâches personnelles, professionnelles et académiques.
 
 ## 🚀 Fonctionnalités
 
-- ✅ Gestion de tâches avec catégories (Perso, Travail, Études)
-- 🎤 Contrôle vocal en français
-- 📊 Statistiques et filtres
+- ✅ Gestion complète des tâches avec catégories (Perso, Travail, Études)
+- 🎤 Contrôle vocal en français pour créer et gérer les tâches
+- 📊 Statistiques en temps réel (total, actives, terminées, priorités)
+- 🔍 Recherche et filtres avancés (par statut, catégorie, date)
+- 📅 Dates d'échéance avec indicateurs visuels
 - 🎨 Interface moderne et responsive
+
+## 🛠️ Technologies
+
+- React 18 + TypeScript
+- Vite 6
+- Tailwind CSS v4
+- Web Speech API
 
 ## 📦 Installation
 
 ```bash
+git clone https://github.com/moulla24/ErgoVoice-Todo.git
+cd ergovoice-todo
 npm install
 ```
 
-## 🛠️ Développement
+## 🚀 Développement
 
 ```bash
 npm run dev
@@ -28,92 +38,73 @@ L'application sera accessible sur `http://localhost:3000`
 
 ```bash
 npm run build
+npm run preview
 ```
-
-Le build sera généré dans le dossier `dist/`
-
-## 🚀 Déploiement sur Vercel
-
-### Méthode 1 : Via l'interface Vercel (Recommandé)
-
-1. **Préparer le projet**
-   - Assurez-vous que tous les fichiers sont commités dans Git
-   - Poussez votre code sur GitHub, GitLab ou Bitbucket
-
-2. **Connecter à Vercel**
-   - Allez sur [vercel.com](https://vercel.com)
-   - Connectez-vous avec votre compte GitHub/GitLab/Bitbucket
-   - Cliquez sur "Add New Project"
-   - Importez votre repository
-
-3. **Configuration automatique**
-   - Vercel détectera automatiquement Vite
-   - Les paramètres suivants seront utilisés automatiquement :
-     - **Framework Preset**: Vite
-     - **Build Command**: `npm run build`
-     - **Output Directory**: `dist`
-     - **Install Command**: `npm install`
-
-4. **Déployer**
-   - Cliquez sur "Deploy"
-   - Vercel déploiera automatiquement votre application
-
-### Méthode 2 : Via Vercel CLI
-
-1. **Installer Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Se connecter**
-   ```bash
-   vercel login
-   ```
-
-3. **Déployer**
-   ```bash
-   vercel
-   ```
-
-4. **Déployer en production**
-   ```bash
-   vercel --prod
-   ```
-
-## 📝 Notes importantes
-
-- ⚠️ **HTTPS requis** : La reconnaissance vocale nécessite HTTPS en production. Vercel fournit automatiquement HTTPS.
-- 🎤 **Microphone** : L'application nécessite l'autorisation du microphone dans le navigateur.
-- 🌐 **Navigateurs supportés** : Chrome, Edge, Safari (dernière version) pour la reconnaissance vocale.
-
-## 🔧 Configuration
-
-Le fichier `vercel.json` est déjà configuré pour :
-- Rediriger toutes les routes vers `index.html` (SPA)
-- Utiliser Vite comme framework
-- Builder dans le dossier `dist`
 
 ## 📄 Structure du projet
 
 ```
-├── src/
-│   ├── components/      # Composants React
-│   ├── styles/          # Styles globaux
-│   ├── App.tsx          # Composant principal
-│   └── main.tsx         # Point d'entrée
-├── index.html           # HTML principal
-├── vite.config.ts       # Configuration Vite
-├── vercel.json          # Configuration Vercel
-└── package.json         # Dépendances
+src/
+├── components/          # Composants React
+│   ├── AddTaskModal.tsx
+│   ├── FilterBar.tsx
+│   ├── Header.tsx
+│   ├── StatsPanel.tsx
+│   ├── TaskItem.tsx
+│   ├── TaskList.tsx
+│   └── VoiceControlPanel.tsx
+├── App.tsx              # Composant principal
+├── main.tsx             # Point d'entrée
+└── index.css            # Styles Tailwind
 ```
+
+## 🎤 Contrôle vocal
+
+1. Cliquez sur le bouton micro
+2. Dites votre tâche
+3. Validez et indiquez priorité/catégorie
+
+**Commandes vocales :**
+- "Coche [titre]" - Marquer comme terminée
+- "Supprime les tâches terminées"
+- "Affiche les tâches d'aujourd'hui"
+- "Trier par priorité"
+
+## 🚀 Déploiement sur Vercel
+
+1. Connectez votre repository GitHub à Vercel
+2. Vercel détectera automatiquement Vite
+3. Cliquez sur "Deploy"
+
+**Via CLI :**
+```bash
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+## 📡 Backend API
+
+Documentation complète disponible dans [`BACKEND_API.md`](./BACKEND_API.md)
+
+## ⚠️ Notes importantes
+
+- HTTPS requis pour la reconnaissance vocale en production
+- Autorisation microphone nécessaire
+- Navigateurs supportés : Chrome, Edge, Safari
+- Stockage actuel : localStorage
 
 ## 🐛 Dépannage
 
-Si le déploiement échoue :
-1. Vérifiez que `npm run build` fonctionne localement
-2. Vérifiez les logs de build sur Vercel
-3. Assurez-vous que toutes les dépendances sont dans `package.json`
+**Build échoue :** Vérifiez que `npm run build` fonctionne localement
+
+**Reconnaissance vocale :** Vérifiez HTTPS et autorisation microphone
 
 ## 📞 Support
 
-Pour toute question ou problème, consultez la documentation Vercel : [vercel.com/docs](https://vercel.com/docs)
+- Documentation Vercel : [vercel.com/docs](https://vercel.com/docs)
+- Documentation API : [`BACKEND_API.md`](./BACKEND_API.md)
+
+---
+
+**Développé avec ❤️**
