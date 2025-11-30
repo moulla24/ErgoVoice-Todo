@@ -249,7 +249,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/40">
-      <Header onClearCompleted={deleteAllCompleted} tasksCount={tasks.length} />
+      <Header tasksCount={tasks.length} />
       
       {/* Celebration overlay */}
       {showCelebration && (

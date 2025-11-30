@@ -1,11 +1,10 @@
 import { Mic2 } from 'lucide-react';
 
 interface HeaderProps {
-  onClearCompleted: () => void;
   tasksCount: number;
 }
 
-export function Header({ onClearCompleted, tasksCount }: HeaderProps) {
+export function Header({ tasksCount }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/60 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
