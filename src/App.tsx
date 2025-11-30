@@ -246,53 +246,55 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/40">
-      <Header tasksCount={tasks.length} />
-      
-      {/* Celebration overlay */}
-      {showCelebration && (
-        <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-          <div className="animate-bounce">
-            <div className="text-8xl">🎉</div>
-          </div>
-        </div>
-      )}
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        {/* Stats Panel */}
+  <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/40">
+  <Header tasksCount={tasks.length} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mt-6">
-          {/* Colonne de gauche - Liste des tâches (70%) */}
-          <div className="lg:col-span-2 order-2 lg:order-1">
-
-            
-            <TaskList
-              tasks={tasks}
-              filter={filter}
-              sortBy={sortBy}
-              searchQuery={searchQuery}
-              onFilterChange={setFilter}
-              onSortChange={setSortBy}
-              onSearchChange={setSearchQuery}
-              onToggleTask={toggleTask}
-              onDeleteTask={deleteTask}
-              onUpdateTask={updateTask}
-              onAddTask={addTask}
-            />
-          </div>
-
-          {/* Colonne de droite - Contrôle vocal (30%) */}
-          <div className="lg:col-span-1 order-1 lg:order-2">
-            <VoiceControlPanel
-              isListening={isListening}
-              transcript={transcript}
-              onListeningChange={setIsListening}
-              onTranscriptChange={setTranscript}
-              onVoiceCommand={handleVoiceCommand}
-            />
-          </div>
-        </div>
-      </main>
+  {/* Celebration overlay */}
+  {showCelebration && (
+    <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
+      <div className="animate-bounce">
+        <div className="text-8xl">🎉</div>
+      </div>
     </div>
+  )}
+
+  <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+    {/* Stats Panel */}
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-6">
+      
+      {/* Colonne de gauche - Liste des tâches (70%) */}
+      <div className="col-span-1 md:col-span-2 lg:col-span-2 order-2 md:order-1 lg:order-1">
+        <div className="overflow-auto max-h-[calc(100vh-8rem)] lg:max-h-[calc(100vh-12rem)]">
+          <TaskList
+            tasks={tasks}
+            filter={filter}
+            sortBy={sortBy}
+            searchQuery={searchQuery}
+            onFilterChange={setFilter}
+            onSortChange={setSortBy}
+            onSearchChange={setSearchQuery}
+            onToggleTask={toggleTask}
+            onDeleteTask={deleteTask}
+            onUpdateTask={updateTask}
+            onAddTask={addTask}
+          />
+        </div>
+      </div>
+
+      {/* Colonne de droite - Contrôle vocal (30%) */}
+      <div className="col-span-1 md:col-span-1 lg:col-span-1 order-1 md:order-2 lg:order-2">
+        <div className="flex flex-col w-full h-full overflow-auto">
+          <VoiceControlPanel
+            isListening={isListening}
+            transcript={transcript}
+            onListeningChange={setIsListening}
+            onTranscriptChange={setTranscript}
+            onVoiceCommand={handleVoiceCommand}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
   );
 }
